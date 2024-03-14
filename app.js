@@ -8,7 +8,7 @@ const http = require('http');
 const hostname = '127.0.0.1';
 const httpPort = 3000;
 
-// let mongoose = require('mongoose');
+let mongoose = require('mongoose');
 // let mongoDB = "mongodb://127.0.0.1/socioloski_in_poklicni_vidiki";
 // mongoose.connect(mongoDB);
 // mongoose.Promise = global.Promise;
@@ -16,7 +16,6 @@ const httpPort = 3000;
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var options = {
   dbName: 'Opravilko',
-  ssl: true,
   connectTimeoutMS: 30000, // čas v milisekundah
   socketTimeoutMS: 60000  // čas v milisekundah
 };

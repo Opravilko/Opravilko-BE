@@ -4,6 +4,8 @@ services:
     image: ghcr.io/opravilko/opravilko-be:main
     container_name: opravilko-be
     domainname: opravilko
+    environment:
+      - database_uri=mongodb://mongodb/socioloski_in_poklicni_vidiki
     ports:
       - 3000:3000
   
