@@ -1,4 +1,4 @@
-name: Create and deploy
+name: Create and publish a Docker image
 
 on:
   push:
@@ -39,39 +39,3 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-    
-    steps:
-      - name: Azure login
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-      - name: Deploy Mongodb to Azure Container Instances
-        uses: azure/aci-deploy@v1
-        with:
-          resource-group: Opravilko
-          image: mongo
-          name: mongodb
-          location: 'Germany West Central'
-
-      - name: Deploy backend to Azure Container Instances
-        uses: azure/aci-deploy@v1
-        with:
-          resource-group: Opravilko
-          dns-name-label: opravilko
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
-          registry-login-server: ${{ env.REGISTRY }}
-          registry-username: ${{ github.actor }}
-          registry-password: ${{ secrets.GITHUB_TOKEN }}
-          name: opravilko-be
-          environment-variables: database_uri=mongodb://mongodb/socioloski_in_poklicni_vidiki
-          ports: 3000
-          location: 'Germany West Central'
