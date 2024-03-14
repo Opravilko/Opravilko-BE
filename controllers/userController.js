@@ -17,7 +17,7 @@ module.exports = {
   // {
   //    "name": "string", 
   //    "token": "string"
-  // }
+  // } 
   // output
   // message
 
@@ -36,5 +36,50 @@ module.exports = {
     } catch (error) {
         return res.status(500).json({ message: 'Napaka', error: error.message });
     }
-  } 
+  },
+
+  // input
+  // {
+  //    "oldUsername": "string",
+  //    "name": "string",
+  //    "email": "string@example.com",
+  //    "password": "string",
+  //    "role": "string",
+  //    "token": "string"
+  // }
+  // output
+  // message in podatki uporabnika
+
+  update: async function (req, res) {
+    const { name, email, pass, role, points } = req.body;
+    const oldUsername = req.body.oldUsername; 
+
+    try {
+        const user = await UserModel.findOne({ name: oldUsername });
+        if (!user) {
+            return res.status(404).json({ message: 'Uporabnik ne obstaja' });
+        }
+
+        if (name) {
+            user.name = name;
+        }
+        if (email) {
+            user.email = email;
+        }
+        if (pass) {
+            user.pass = pass;
+        }
+        if (role) {
+            user.role = role;
+        }
+        if (points) {
+            user.points = points;
+        }
+        await user.save();
+
+        return res.status(200).json({ message: 'Uporabnik posodobljen', user: user });
+    } catch (error) {
+        return res.status(500).json({ message: 'Napaka', error: error.message });
+    }
+}
 };
