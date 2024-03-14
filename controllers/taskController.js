@@ -132,13 +132,4 @@ module.exports = {
     });
     return res.status(200).json({ points });
   },
-  //iskanje svijih taskov
-  my: async function (req, res) {
-    const taskFound = await TaskModel.find();
-    if (!taskFound) {
-      return res.status(500).json({ message: "Error" });
-    }
-    const response = taskFound.filter((task) => task.includes(req.user.name));
-    return res.status(200).json(response);
-  },
 };
