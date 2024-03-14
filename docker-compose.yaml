@@ -1,0 +1,12 @@
+services:
+  backend:
+    build: .
+    image: ghcr.io/opravilko/opravilko-be:main
+    container_name: opravilko-be
+    domainname: opravilko
+    ports:
+      - 3000:3000
+  
+  mongodb:
+    image: mongo
+    container_name: mongodb
