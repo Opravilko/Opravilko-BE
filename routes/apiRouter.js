@@ -8,6 +8,9 @@ let exampleRouter = require("./api/exampleRouter.js");
 router.use("/example1", exampleRouter);
 router.use("/example_auth", checkAuthenticated, exampleRouter);
 
+let userRouter = require("./api/userRouter.js");
+router.use("/user", checkAuthenticated, userRouter);
+
 let messageRouter = require("./api/messageRouter.js");
 router.use("/message", checkAuthenticated, messageRouter);
 
