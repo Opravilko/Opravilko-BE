@@ -5,10 +5,26 @@ services:
     container_name: opravilko-be
     domainname: opravilko
     environment:
-      - database_uri=mongodb://mongodb/socioloski_in_poklicni_vidiki
+      - database_uri=mongodb://mongodb/opravilko
+      - ACCESS_TOKEN_SECRET=secret123
     ports:
       - 3000:3000
   
   mongodb:
     image: mongo
     container_name: mongodb
+    command:
+      - mongod
+      - --dbpath=/data/db_data
+      - --bind_ip_all
+    volumes:
+      - opravilko-data:/data/db_data
+
+volumes:
+  opravilko-data:
+    driver: azure_file
+    driver_opts:
+      share_name: db-data
+      storage_account_name: opravilko
+      storage_account_key: YfREEk0M3MxnKG3tBJBNd4WelcZ/YoFxaIEdxTCe7/rBEHeOHIsiCF78iqfquJSpNs8LLTinvRo8+ASt02kuyw==
+
