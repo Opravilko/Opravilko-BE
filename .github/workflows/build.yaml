@@ -39,3 +39,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Update Azure Container Group via Functions
+        run: curl https://opravilko.azurewebsites.net/api/HttpTrigger?code=IQ1fiGSRI4tceB8Sir-E4zT3ur6mwLaAczt0uDE4kN3wAzFulESLTg==
