@@ -19,10 +19,6 @@ let userSchema = new Schema({
       type: String,
       required: true
     },
-    points: {
-      type: Number,
-      required: true
-    }
   });
   
 let User = mongoose.model('User', userSchema);

@@ -51,7 +51,7 @@ module.exports = {
   // message in podatki uporabnika
 
   update: async function (req, res) {
-    const { name, email, pass, role, points } = req.body;
+    const { name, email, pass, role } = req.body;
     const oldUsername = req.body.oldUsername; 
 
     try {
@@ -71,9 +71,6 @@ module.exports = {
         }
         if (role) {
             user.role = role;
-        }
-        if (points) {
-            user.points = points;
         }
         await user.save();
 
