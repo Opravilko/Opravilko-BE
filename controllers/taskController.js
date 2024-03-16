@@ -39,15 +39,13 @@ module.exports = {
     const due_date = req.body.due_date;
     const description = req.body.description;
     const users_assigned = req.body.users_assigned;
-    const project = req.body.projectId;
 
     if (
       name == null ||
       start_date == null ||
       due_date == null ||
       description == null ||
-      users_assigned == null ||
-      project == null
+      users_assigned == null
     ) {
       return res.status(400).json({ message: "Bad Request" });
     }
@@ -58,7 +56,6 @@ module.exports = {
       due_date,
       description,
       users_assigned,
-      project,
       status: false,
       author: req.user._id,
     });
