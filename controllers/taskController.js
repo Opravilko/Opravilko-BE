@@ -19,13 +19,15 @@ module.exports = {
       return res.status(400).json({ message: "User ID not provided" });
     }
 
-    const taskFound = await TaskModel.find({ users_assigned: req.user._id });
+    const taskFound = await TaskModel.find();
 
     if (!taskFound) {
       return res.status(500).json({ message: "Error" });
     }
 
-    return res.status(200).json(taskFound);
+    const response = taskFound.filter(task => task.includes(req.user.name));
+
+    return res.status(200).json(response);
   },
 
   // ustvari nov task
