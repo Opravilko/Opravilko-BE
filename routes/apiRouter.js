@@ -3,10 +3,10 @@ let router = express.Router();
 
 const checkAuthenticated = require("../middleware/checkAuthenticated.js");
 
-let exampleRouter = require("./api/exampleRouter.js");
+// let exampleRouter = require("./api/exampleRouter.js");
 
-router.use("/example1", exampleRouter);
-router.use("/example_auth", checkAuthenticated, exampleRouter);
+// router.use("/example1", exampleRouter);
+// router.use("/example_auth", checkAuthenticated, exampleRouter);
 
 let authRouter = require('./api/authRouter.js');
 router.use('/auth', authRouter);
