@@ -1,5 +1,5 @@
 //!--OPTIONAL--!
-/*
+
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
@@ -22,4 +22,4 @@ let messageSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Message', messageSchema);*/
+module.exports = mongoose.model('MessagePicture', messageSchema);
