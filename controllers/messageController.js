@@ -32,6 +32,7 @@ module.exports = {
   },
 
   //OPTIONAL
+  /*
   sendPicture: async function (req, res) {
     const toUser = req.body.toUser;
     const picUrl = req.body.pic;
@@ -54,7 +55,7 @@ module.exports = {
     }
 
     return res.status(500).json({ message: 'Error' });
-  },
+  },*/
 
   with: async function (req, res) {
     let user = req.body.user;
@@ -93,6 +94,7 @@ module.exports = {
   },
 
   //OPTIONAL
+  /*
   withPic: async function (req, res) {
     let user = req.body.user;
     if (user == null) {
@@ -127,7 +129,7 @@ module.exports = {
     const comb = picFromHimToMeName.concat(picFromMeToHimName);
 
     return res.status(201).json(comb);
-  },
+  },*/
 
   delete: async function (req, res) {
     let messageId = req.body.messageId;
