@@ -28,8 +28,7 @@ let taskSchema = new Schema({
       required: true
     },
     users_assigned: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+      type: String,
       required: true
     }]
   });

@@ -186,7 +186,7 @@ or
 ```
 in
 {
-  teskId: id,
+  taskId: id,
   status: bool
 }
 
@@ -202,7 +202,7 @@ status code with message
 ```
 in
 {
-  teskId: id,
+  taskId: id,
 }
 
 out
