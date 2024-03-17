@@ -9,8 +9,7 @@ module.exports = {
     if (!userFound) {
       return res.status(500).json({ message: 'Napaka' });
     }
-    const ret = userFound.map(user => user.name);
-    return res.status(200).json(ret);
+    return res.status(200).json(userFound);
   },
 
   // input

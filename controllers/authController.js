@@ -30,7 +30,7 @@ module.exports = {
     const tokenPay = { id: userFound.id };
     const token = JWT.sign(tokenPay, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 
-    return res.status(200).json({ token: token,username : name });
+    return res.status(200).json({ token: token, user: userFound });
   },
 
   // input
